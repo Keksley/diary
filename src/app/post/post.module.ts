@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 const routes: Route[] = [
   {
-    path: ':id',
+    path: 'post/:id',
     component: ViewComponent,
   },
   {
