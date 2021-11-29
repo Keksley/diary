@@ -1,1 +1,17 @@
-<textarea class="textarea" placeholder="Опишите свой сон" rows="20"></textarea>
+<textarea class="textarea mb-4" placeholder="Опишите свой сон" rows="20"></textarea>
+<div class="block">
+  <button class="button" type="button" (click)="addNote()">
+    Добавить заметку
+  </button>
+</div>
+<div class="box block" *ngFor="let note of notes">
+  <textarea [(ngModel)]="note.text" rows="5" class="textarea"></textarea>
+</div>
+<div class="block">
+  <button class="button mr-4 is-success" type="button">
+    Сохранить
+  </button>
+  <button class="button" type="button">
+    Отмена
+  </button>
+</div>
