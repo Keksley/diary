@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit',
@@ -6,11 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit.component.scss'],
 })
 export class EditComponent implements OnInit {
-  constructor() {}
-  notes: { text: string; date: Date }[] = [];
+  constructor(private titleService: Title) {
+    this.titleService.setTitle(
+      'Редактирование' + (this.title ? ': ' + this.title : '')
+    );
+  }
+  notes: { text: string; date: string }[] = [];
   text: string = '';
+  date: string = new Date().toLocaleString(undefined, {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+  title: string = '';
   ngOnInit(): void {}
   addNote() {
-    this.notes.push({ text: '', date: new Date() });
+    this.notes.push({
+      text: '',
+      date: new Date().toLocaleString(undefined, {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+      }),
+    });
   }
 }
