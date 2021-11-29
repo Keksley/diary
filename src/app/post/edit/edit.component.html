@@ -1,11 +1,30 @@
-<textarea class="textarea mb-4" placeholder="Опишите свой сон" rows="20"></textarea>
+<title>Редактирование: {{ title ? title : date }}</title>
+<div class="block">
+  <h1 class="title">
+    Редактирование: {{ title ? title : date }}
+  </h1>
+</div>
+<div class="block">
+  <input placeholder="Название (не обязательно)" type="text" [(ngModel)]="title" class="input">
+</div>
+<div class="block">
+  <textarea class="textarea" placeholder="Опишите свой сон" rows="20"></textarea>
+</div>
+<div class="block">
+  {{ date | date}}
+</div>
 <div class="block">
   <button class="button" type="button" (click)="addNote()">
     Добавить заметку
   </button>
 </div>
 <div class="box block" *ngFor="let note of notes">
-  <textarea [(ngModel)]="note.text" rows="5" class="textarea"></textarea>
+  <div class="block">
+    <textarea [(ngModel)]="note.text" rows="5" class="textarea"></textarea>
+  </div>
+  <div class="block">
+    {{ note.date }}
+  </div>
 </div>
 <div class="block">
   <button class="button mr-4 is-success" type="button">
